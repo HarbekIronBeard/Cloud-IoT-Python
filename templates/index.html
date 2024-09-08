@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentador Automático</title>
+</head>
+<body>
+    <h1>Alimentador Automático</h1>
+    <h2>Horários de Alimentação</h2>
+    <form action="/atualizar_horarios" method="POST">
+        {% for horario in horarios %}
+        <label>Horário {{ loop.index }}:</label>
+        <input type="time" name="horarios" value="{{ '%02d:%02d' % (horario[0], horario[1]) }}">
+        <br>
+        {% endfor %}
+        <button type="submit">Atualizar Horários</button>
+    </form>
+
+    <h2>Alimentar Manualmente</h2>
+    <form action="/alimentar" method="POST">
+        <button type="submit">Liberar Ração Agora</button>
+    </form>
+</body>
+</html>
